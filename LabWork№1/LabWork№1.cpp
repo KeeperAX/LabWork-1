@@ -26,6 +26,13 @@ int main(){
 			flag = false;
 			continue; 
 		}
+		else if (a < 1)
+		{
+			system("cls");
+			cout << "\tОшибка. Введите число от 1 до 4.\n";
+			flag = false;
+			continue;
+		}
 		else {
 			flag = true;
 		}
