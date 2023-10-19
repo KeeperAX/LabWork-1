@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdlib>
 #include <sstream>
 using namespace std;
@@ -8,9 +8,10 @@ void three();
 void four();
 int main() {
 	setlocale(LC_ALL, "RU");
-	while (true)
+	bool flag = true;
+	do
 	{
-		bool flag = true;
+		flag = true;
 		if (flag)
 		{
 			cout << "{1}Кол-во байт отводимые на тип данных.\n";
@@ -18,16 +19,16 @@ int main() {
 			cout << "{3}Вывести на экран двоичное представление в памяти типа float.\n";
 			cout << "{4}Выход из программы\n";
 		}
-		int a;
-		cin >> a;
-		if (a > 4)
+		int choice;
+		cin >> choice;
+		if (choice > 4)
 		{
 			system("cls");
 			cout << "\tОшибка. Введите число от 1 до 4.\n";
 			flag = false;
 			continue;
 		}
-		else if (a < 1)
+		else if (choice < 1)
 		{
 			system("cls");
 			cout << "\tОшибка. Введите число от 1 до 4.\n";
@@ -37,14 +38,14 @@ int main() {
 		else {
 			flag = true;
 		}
-		switch (a)
+		switch (choice)
 		{
 		case(1): system("cls"); one(); break;
 		case(2): system("cls"); two(); break;
 		case(3): system("cls"); three(); break;
 		case(4): system("cls"); four(); break;
 		}
-	}
+	} while (true);
 	return 0;
 }
 void one() {
