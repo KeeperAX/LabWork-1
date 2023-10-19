@@ -1,11 +1,12 @@
 ﻿#include <iostream>
 #include <cstdlib>
+#include <sstream>
 using namespace std;
 void one();
 void two();
 void three();
 void four();
-int main(){
+int main() {
 	setlocale(LC_ALL, "RU");
 	while (true)
 	{
@@ -24,7 +25,7 @@ int main(){
 			system("cls");
 			cout << "\tОшибка. Введите число от 1 до 4.\n";
 			flag = false;
-			continue; 
+			continue;
 		}
 		else if (a < 1)
 		{
@@ -80,30 +81,86 @@ void two() {
 	do
 	{
 		cout << "Введите целое число.\n";
-		int num;
+		int num, change, mas[sizeof(int) * 8]; 
 		cin >> num;
 		unsigned int raz = sizeof(int) * 8; // Количество разрядов
 		unsigned int mask = 1 << raz - 1; // Маска побитового сравнения
-		for (int i = 1; i <= raz -1 ; i++)
-		{
-			putchar(num & mask ? '1' : '0'); // если 1, то возвращается 1, иначе 0
-			num <<= 1;
-			if (i % 8 == 0)
+			for (int i = 1; i <= raz; i++)
 			{
-				putchar(' ');// Разделитель
+				putchar(num & mask ? '1' : '0'); // если 1, то возвращается 1, иначе 0
+				mas[i-1] = (num & mask ? 1 : 0);
+				num <<= 1;
+				if (i % 8 == 0 || i == 1)
+				{
+					putchar(' ');// Разделитель
+				}
 			}
-		}
 		cout << "\n\n";
 		cout << "Выберите следующее действие:\n";
 		cout << "1. Вернуться к главному меню\n";
-		cout << "2. Выйти из программы\n";
-		int choice;
+		cout << "2. Изменение битов\n";
+		cout << "3. Выйти из программы\n";
+		int choice, channum;
 		cin >> choice;
 		if (choice == 1) {
 			system("cls");
 			break;
 		}
 		else if (choice == 2) {
+			cout << "Введите порядковый номер бита\n";
+			cin >> change;
+			if (change > (sizeof(int)*8))
+			{
+				system("cls");
+				cout << "Вы ввели число за диапазоном\n";
+				continue;
+			}
+			else
+			{
+				cout << "Введите число, на которое хотите заменить(0,1)\n";
+				cin >> channum;
+				if (channum > 2)
+				{
+					system("cls");
+					cout << "Вы ввели число за диапазоном\n";
+					continue;
+				}
+				else
+				{
+					mas[change] = channum;
+					for (int i = 0; i < sizeof(int)*8; i++)
+					{
+						if (i % 8 == 0 || i == 1)
+						{
+							putchar(' ');
+						}
+						cout << mas[i];
+						
+					}
+				}
+				
+			}
+			cout << "\n\n";
+			cout << "Выберите следующее действие:\n";
+			cout << "1. Вернуться к главному меню\n";
+			cout << "2. Выйти из программы\n";
+			int choice;
+			cin >> choice;
+			if (choice == 1) {
+				system("cls");
+				break;
+			}
+			else if (choice == 2) {
+				exit(0);
+			}
+			else {
+				system("cls");
+				cout << "\tОшибка\n";
+				continue;
+			}
+			
+		}
+		else if (choice == 3) {
 			exit(0);
 		}
 		else {
@@ -112,12 +169,13 @@ void two() {
 			continue;
 		}
 	} while (true);
-	
+
 }
 void three() {
 	do
 	{
-		cout << "Введите дробное число.\n";
+		int mas[sizeof(float) * 8];
+		cout << "Введите вещественное число.\n";
 		unsigned int raz = sizeof(float) * 8; // Количество разрядов
 		unsigned int mask = 1 << raz - 1; // Маска побитового сравнения
 		union
@@ -131,6 +189,7 @@ void three() {
 			for (int i = 1; i <= raz; i++)
 			{
 				putchar(num & mask ? '1' : '0'); // если 1, то возвращается 1, иначе 0
+				mas[i - 1] = (num & mask ? 1 : 0);
 				num <<= 1;
 				if (i == 1 || i == 2 || i == 9)
 					putchar(' ');// Разделитель
@@ -140,14 +199,69 @@ void three() {
 		cout << "\n\n";
 		cout << "Выберите следующее действие:\n";
 		cout << "1. Вернуться к главному меню\n";
-		cout << "2. Выйти из программы\n";
-		int choice;
+		cout << "2. Изменение битов\n";
+		cout << "3. Выйти из программы\n";
+		int choice, channum, change;
 		cin >> choice;
 		if (choice == 1) {
 			system("cls");
 			break;
 		}
 		else if (choice == 2) {
+			cout << "Введите порядковый номер бита\n";
+			cin >> change;
+			if (change > (sizeof(int) * 8))
+			{
+				system("cls");
+				cout << "Вы ввели число за диапазоном\n";
+				continue;
+			}
+			else
+			{
+				cout << "Введите число, на которое хотите заменить(0,1)\n";
+				cin >> channum;
+				if (channum > 2)
+				{
+					system("cls");
+					cout << "Вы ввели число за диапазоном\n";
+					continue;
+				}
+				else
+				{
+					mas[change] = channum;
+					for (int i = 0; i < sizeof(int) * 8; i++)
+					{
+						if (i % 8 == 0 || i == 1)
+						{
+							putchar(' ');
+						}
+						cout << mas[i];
+
+					}
+				}
+
+			}
+			cout << "\n\n";
+			cout << "Выберите следующее действие:\n";
+			cout << "1. Вернуться к главному меню\n";
+			cout << "2. Выйти из программы\n";
+			int choice;
+			cin >> choice;
+			if (choice == 1) {
+				system("cls");
+				break;
+			}
+			else if (choice == 2) {
+				exit(0);
+			}
+			else {
+				system("cls");
+				cout << "\tОшибка\n";
+				continue;
+			}
+
+		}
+		else if (choice == 3) {
 			exit(0);
 		}
 		else {
