@@ -82,7 +82,7 @@ void two() {
 		cout << "Введите целое число.\n";
 		int num;
 		cin >> num;
-		unsigned int raz = sizeof(int) * 8 - 1; // Количество разрядов
+		unsigned int raz = sizeof(int) * 8; // Количество разрядов
 		unsigned int mask = 1 << raz - 1; // Маска побитового сравнения
 		for (int i = 0; i <= raz -1 ; i++)
 		{
