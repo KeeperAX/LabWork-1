@@ -83,7 +83,7 @@ void two() {
 		int num;
 		cin >> num;
 		unsigned int raz = sizeof(int) * 8 - 1; // Количество разрядов
-		unsigned mask = 1 << raz - 1; // Маска побитового сравнения
+		unsigned int mask = 1 << raz - 1; // Маска побитового сравнения
 		for (int i = 0; i <= raz -1 ; i++)
 		{
 			putchar(num & mask ? '1' : '0'); // если 1, то возвращается 1, иначе 0
