@@ -2,10 +2,10 @@
 #include <cstdlib>
 #include <sstream>
 using namespace std;
-void one();
-void two();
-void three();
-void four();
+void size();
+void binNum();
+void binFloat();
+void exit();
 int main() {
 	setlocale(LC_ALL, "RU");
 	bool flag = true;
@@ -40,15 +40,15 @@ int main() {
 		}
 		switch (choice)
 		{
-		case(1): system("cls"); one(); break;
-		case(2): system("cls"); two(); break;
-		case(3): system("cls"); three(); break;
-		case(4): system("cls"); four(); break;
+		case(1): system("cls"); size(); break;
+		case(2): system("cls"); binNum(); break;
+		case(3): system("cls"); binFloat(); break;
+		case(4): system("cls"); exit(); break;
 		}
 	} while (true);
 	return 0;
 }
-void one() {
+void size() {
 	do
 	{
 		cout << "int: " << sizeof(int) << "\n";
@@ -78,7 +78,7 @@ void one() {
 		}
 	} while (true);
 }
-void two() {
+void binNum() {
 	do
 	{
 		cout << "Введите целое число.\n";
@@ -172,7 +172,7 @@ void two() {
 	} while (true);
 
 }
-void three() {
+void binFloat() {
 	do
 	{
 		int mas[sizeof(float) * 8];
@@ -272,7 +272,7 @@ void three() {
 		}
 	} while (true);
 }
-void four()
+void exit()
 {
 	exit(0);
 }
